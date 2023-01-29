@@ -12,7 +12,6 @@ screen = pygame.display.set_mode((1200, 720), pygame.DOUBLEBUF)
 display = pygame.Surface((400, 240))
 clock, fps = pygame.time.Clock(), 1000
 
-bg = pygame.transform.scale(pygame.image.load("baldcat.png"), (400, 240)).convert()
 tileset = pygame.transform.scale(pygame.image.load("Dungeon_Tileset.png"), (160, 160)).convert_alpha()
 
 def get_tile(x, y):
@@ -356,7 +355,6 @@ surfaces = []
 while True:
     clock.tick(fps)
     display.fill((0,0,0))
-    display.blit(bg, (0, 0))
 
     mx, my = pygame.mouse.get_pos()
     mx = round(mx // 3)
