@@ -44,14 +44,14 @@ display.blit(lights_display, (0,0), special_flags=BLEND_RGBA_MULT)
 ```
 The only 2 lines you need to worry about are ```lights_display.blit(...)``` and ```Light.main(...)``` so ill walk you through what each does.
 ##
-```
+```python
 lights_display.blit(Pygame_Lights.global_light(display.get_size(), intensity:int(0-255)), (0,0))
 ``` 
 ```intensity:int(0-255)``` -> The intensity at which the whole screen will be lit up.
 
 All this line does is simply provide a base light for the screen or else everything would be dark so you can control how dark the whole screen is without using many smaller lights.
 ##
-```
+```python
 Light.main(Rects:Tuple[pygame.Rect], lights_display, x:int, y:int)
 ``` 
 ```Rects:Tuple[pygame.Rect]``` -> This is a list of rectangles of which the light will cast shadows this can be as long as you want
