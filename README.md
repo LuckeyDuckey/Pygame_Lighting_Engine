@@ -3,7 +3,7 @@
 ## Infomation
 This is a 2D lighting engine made in python to be used with the pygame library. It features dynamic lights that cast shadows and colors mix properly. It is still fairly simple and lacks many of the features of modern game engine lighting systems however as far as I can tell this is the first available generalizable 2D lighting system in pygame so I thought I would document it for anyone looking to use it. This is still in development so in the future it will hopefully have many more features unless I get bored of this project and move on which I hope I don't but we shall see.
 ## Performance
-Note lights take a while to generate I may add a saving feature in the future. List all factors of performance and potential fixes like baked lights.
+.
 ## Feedback / Bugs
 If you encounter any bugs with the package please let me know and I will attempt to fix them as soon as possible this is still in development so is bound to have a few bugs here and there. Also if you think of any ideas that you think are worth adding reach out to me depending on what they are and if I like them I might add them to the package. Also please note that when lights go inside rectangles the shadows will look messed up this is not a bug lights should simply not be inside shadow-casting rectangles.
 ## How to install
