@@ -1,5 +1,6 @@
 # Pygame 2D Lighting Engine
 [![python 3.10.6](https://img.shields.io/badge/python-3.10.6-blue)](https://www.python.org/) [![pygame 2.1.2](https://img.shields.io/badge/pygame-2.1.2-green)](https://www.pygame.org/wiki/about)
+![alt text](https://github.com/LuckeyDuckey/Pygame_Lighting_Engine/blob/main/imgs/Dungeon.PNG)
 ## Infomation
 This is a 2D lighting engine made in python to be used with the pygame library. It features dynamic lights that cast shadows and colors mix properly. It is still fairly simple and lacks many of the features of modern game engine lighting systems however as far as I can tell this is the first available generalizable 2D lighting system in pygame so I thought I would document it for anyone looking to use it. This is still in development so in the future it will hopefully have many more features unless I get bored of this project and move on which I hope I don't but we shall see.
 ## Performance
