@@ -76,8 +76,6 @@ light_red = Pygame_Lights.LIGHT(1000, (255,0,0), 1, True, 0, 90)
 light_green = Pygame_Lights.LIGHT(1000, (0,255,0), 1, True, 0, 90)
 light_blue = Pygame_Lights.LIGHT(1000, (0,0,255), 1, True, 0, 90)
 
-surfaces = []
-
 while True:
     clock.tick(fps)
     display.fill((0,0,0))
