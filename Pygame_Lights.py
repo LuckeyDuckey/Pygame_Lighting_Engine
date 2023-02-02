@@ -7,11 +7,10 @@ from pygame.locals import *
 pygame.init()
 
 class LIGHT:
-    def __init__(self, size, color, pixel_shader):
+    def __init__(self, size, pixel_shader):
         self.size = size
         self.radius = size * 0.5
         self.render_surface = pygame.Surface((size, size))
-        self.color = color
         self.pixel_shader_surf = pixel_shader.copy()
         self.baked_pixel_shader_surf = pixel_shader.copy()
         self.render_surface.set_colorkey((0,0,0))
