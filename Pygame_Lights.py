@@ -156,37 +156,33 @@ def global_light(size, intensity):
     return dark
 
 def pixel_shader(size, color, intensity, point, angle=0, angle_width=360):
-    final_array = np.full((size, size, 3), color, dtype=np.uint16)
-    radius = size*0.5
+    final_array = np.full((size, size, 3), color, dtype=np.float64)
+    radius = size * 0.5
 
-    for x in range(len(final_array)):
+    # Grid -----
+    x, y = np.meshgrid(np.arange(size), np.arange(size))
+    x = x.astype(np.float64)
+    y = y.astype(np.float64)
+    #-----
+
+    # Radial -----
+    distance = np.sqrt((x - radius)**2 + (y - radius)**2)
+    radial_falloff = (radius - distance) * (1 / radius)
+    radial_falloff[radial_falloff <= 0] = 0
+    #-----
+
+    # Angular -----
+    if not point:
+        angular_falloff = 1
         
-        for y in range(len(final_array[x])):
+    else:
+        point_angle = (180 / np.pi) * -np.arctan2((radius - x), (radius - y)) + 180
+        diff_angle = np.abs(((angle - point_angle) + 180) % 360 - 180)
+        angular_falloff = ((angle_width / 2) - diff_angle) * (1 / angle_width)
+        angular_falloff[angular_falloff <= 0] = 0
+    #-----
 
-            #radial -----
-            distance = meth.sqrt((x - radius)**2 + (y - radius)**2)
-    
-            radial_falloff = (radius - distance) * (1 / radius)
+    final_intensity = radial_falloff * angular_falloff * intensity
+    final_array *= final_intensity[..., np.newaxis]
 
-            if radial_falloff <= 0:
-                radial_falloff = 0
-            #-----
-
-            #angular -----
-            if not point:
-                angular_falloff = 1
-                
-            else:
-                point_angle = (180 / meth.pi) * -meth.atan2((radius - x), (radius - y)) + 180
-                diff_anlge = abs(((angle - point_angle) + 180) % 360 - 180)
-                
-                angular_falloff = ((angle_width / 2) - diff_anlge) * (1 / angle_width)
-
-                if angular_falloff <= 0:
-                    angular_falloff = 0
-            #-----
-    
-            final_intensity = radial_falloff * angular_falloff * intensity
-            final_array[x][y] = final_array[x][y] * final_intensity
-
-    return pygame.surfarray.make_surface(final_array)
+    return pygame.surfarray.make_surface(final_array.astype(np.uint8))
